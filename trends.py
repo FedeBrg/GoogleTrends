@@ -4,7 +4,7 @@ from pytrends.request import TrendReq
 pytrends = TrendReq(hl='en-US', tz=360)
 
 
-directory = "."
+directory = ""
 filename = "diarios.csv"
 kw_file = pd.read_csv(directory+filename)
 kw_list = kw_file["Keywords"].values.tolist()
@@ -61,7 +61,7 @@ def combine_wbase(directory, base_name, n_file, filename):
     #return df
 
 
-combined = combine_wbase(directory, "gtrends_overtime_argentina_", 3, "gtrends_overtime_worlwide_merged.csv")
+combined = combine_wbase(directory, "gtrends_overtime_argentina_", 4, "gtrends_overtime_worlwide_merged.csv")
 combined = pd.read_csv("gtrends_overtime_worlwide_merged.csv")
 print(combined)
 
@@ -74,7 +74,7 @@ def partial(df, n_file):
     df = df.drop(columns="isPartial")
     return df
 
-combined = partial(combined,3)
+combined = partial(combined,4)
 combined
 
 def normalise(df, n_file, key_ref, col='date'):
@@ -103,7 +103,7 @@ def normalise(df, n_file, key_ref, col='date'):
 
 
 
-normalised = normalise(combined, n_file=3, key_ref="Ámbito", col='date')
+normalised = normalise(combined, n_file=4, key_ref="Ámbito", col='date')
 normalised
 
 
@@ -116,7 +116,7 @@ def tidy(df, n_file, key_ref, kw_file, col='date'):
 
 
 
-overtime = tidy(normalised, 3, "Ámbito", kw_file, col='date')
+overtime = tidy(normalised, 4, "Ámbito", kw_file, col='date')
 print(overtime)
 
 overtime.to_csv("gtrends_diarios_overtime.csv", index = False)
