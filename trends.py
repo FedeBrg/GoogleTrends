@@ -4,7 +4,7 @@ from pytrends.request import TrendReq
 pytrends = TrendReq(hl='en-US', tz=360)
 
 
-directory = "C:\\Users\\fedeb\\Desktop\\GoogleTrends\\"
+directory = "."
 filename = "diarios.csv"
 kw_file = pd.read_csv(directory+filename)
 kw_list = kw_file["Keywords"].values.tolist()
